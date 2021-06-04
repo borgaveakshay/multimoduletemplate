@@ -81,6 +81,8 @@ class CommonBinaryPlugin : Plugin<Project> {
             add("implementation", Dependencies.Libs.appcompat)
             add("implementation", Dependencies.Libs.materialDesign)
             add("testImplementation", Dependencies.TestLibs.junit)
+            add("testImplementation", Dependencies.TestLibs.roboletric)
+            add("testImplementation", Dependencies.TestLibs.mockito)
             add("androidTestImplementation", Dependencies.TestLibs.testExtn)
             add("androidTestImplementation", Dependencies.TestLibs.testExtn)
 

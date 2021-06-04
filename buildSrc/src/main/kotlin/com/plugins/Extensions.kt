@@ -26,3 +26,31 @@ fun Project.addViewModelAndLiveDataDependencies() {
         add("implementation", Dependencies.Core.liveData)
     }
 }
+
+fun Project.addRoomDependencies() {
+    dependencies {
+        add("implementation", Dependencies.Core.room)
+        add("annotationProcessor", Dependencies.Core.roomAnnotationProcessor)
+        add("testImplementation", Dependencies.TestLibs.room)
+    }
+}
+
+fun Project.addNavigationDependencies() {
+    dependencies {
+        add("implementation", Dependencies.Core.navigation)
+        add("implementation", Dependencies.Core.navigationUi)
+        add("androidTestImplementation", Dependencies.TestLibs.navigation)
+    }
+}
+
+fun Project.addRetrofitAndOkHttpDependencies() {
+    dependencies {
+        add("implementation", Dependencies.Network.retrofit)
+        add("implementation", Dependencies.Network.okhttp)
+        add("implementation", Dependencies.Network.gson)
+        add("implementation", Dependencies.Network.loggingInterceptor)
+        add("implementation", Dependencies.Network.rxjava)
+        add("implementation", Dependencies.Network.rxJavaAdapter)
+        add("implementation", Dependencies.Network.reactiveRx)
+    }
+}

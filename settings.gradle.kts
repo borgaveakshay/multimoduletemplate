@@ -1,3 +1,5 @@
+include(":base")
 include(":home")
 include(":app")
-rootProject.name = "My Monthly Expense"
+include(":base")
+rootProject.name = "WeatherApp"
