@@ -1,5 +1,6 @@
 package com.example.datastore.dao
 
+import io.reactivex.rxjava3.core.Observable
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
@@ -16,5 +17,5 @@ interface WeatherDao {
     fun getAllWeatherData(): LiveData<List<WeatherEntity>>
 
     @Query("SELECT * from weatherentity where city_name= :cityName")
-    fun getWeatherOfCity(cityName: String): LiveData<WeatherEntity>
+    fun getWeatherOfCity(cityName: String): Observable<WeatherEntity>
 }

@@ -41,8 +41,26 @@ data class GetWeatherResponse(
     val base: String,
 
     @field:SerializedName("wind")
-    val wind: Wind
-)
+    val wind: Wind,
+
+    var city: String,
+) {
+    constructor(city: String, temp: Double) : this(
+        0,
+        0,
+        Main(temp, 0.0, 0, 0, 0.0, 0.0),
+        Clouds(0),
+        Sys("", 0, 0, 0, 0, 0.0),
+        0,
+        Coord(0.0, 0.0),
+        emptyList(),
+        "",
+        0,
+        0,
+        "",
+        Wind(0, 0.0), city
+    )
+}
 
 data class Clouds(
 

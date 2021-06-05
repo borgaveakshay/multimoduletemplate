@@ -9,5 +9,5 @@ interface WeatherDataStore {
 
     fun addWeatherUpdate(city: String, response: GetWeatherResponse)
 
-    fun getWeather(city: String): LiveData<WeatherEntity>
+    fun getWeather(city: String): Observable<GetWeatherResponse>
 }
