@@ -14,4 +14,7 @@ interface WeatherDao {
 
     @Query("SELECT * from weatherentity")
     fun getAllWeatherData(): LiveData<List<WeatherEntity>>
+
+    @Query("SELECT * from weatherentity where city_name= :cityName")
+    fun getWeatherOfCity(cityName: String): LiveData<WeatherEntity>
 }
