@@ -47,10 +47,16 @@ fun Project.addRetrofitAndOkHttpDependencies() {
     dependencies {
         add("implementation", Dependencies.Network.retrofit)
         add("implementation", Dependencies.Network.okhttp)
-        add("implementation", Dependencies.Network.gson)
         add("implementation", Dependencies.Network.loggingInterceptor)
         add("implementation", Dependencies.Network.rxjava)
         add("implementation", Dependencies.Network.rxJavaAdapter)
         add("implementation", Dependencies.Network.reactiveRx)
+        addGsonDependency()
+    }
+}
+
+fun Project.addGsonDependency() {
+    dependencies {
+        add("implementation", Dependencies.Network.gson)
     }
 }

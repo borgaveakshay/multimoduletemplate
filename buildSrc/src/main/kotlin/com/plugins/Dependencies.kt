@@ -57,6 +57,7 @@ class Dependencies {
         const val room = "androidx.room:room-testing:${Versions.room}"
         const val navigation = "androidx.navigation:navigation-testing:${Versions.navigation}"
         const val mockito = "org.mockito:mockito-all:${Versions.mockito}"
+        const val testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
 
     }
 

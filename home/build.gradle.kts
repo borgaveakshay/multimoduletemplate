@@ -14,5 +14,7 @@ dependencies {
     addViewModelAndLiveDataDependencies()
     addRetrofitAndOkHttpDependencies()
     implementation(project(":base"))
+    implementation(project(":models"))
+    implementation(project(":datastore"))
 }
 

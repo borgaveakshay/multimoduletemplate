@@ -1,3 +1,3 @@
-package com.example.home.data.models
+package com.example.models.request
 
 class GetWeatherRequest(val city: String)
