@@ -1,6 +1,6 @@
 package com.example.home.data.repositoriesimpl
 
-import com.example.datastore.WeatherDataStore
+import com.example.datastore.store.WeatherDataStore
 import com.example.home.data.api.WeatherAPI
 import com.example.home.testutils.TestUtils
 import com.example.models.request.GetWeatherRequest

@@ -1,4 +1,4 @@
-package com.example.datastore
+package com.example.datastore.store
 
 import androidx.lifecycle.LiveData
 import com.example.models.GetWeatherResponse
