@@ -1,7 +1,7 @@
 import com.plugins.addGsonDependency
 
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("common-binary-plugin")
 }
 

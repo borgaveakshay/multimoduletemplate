@@ -19,9 +19,9 @@ class GetWeatherRepoImpl @Inject constructor(
         return weatherRequest?.let { request ->
             val result = api.getWeather(request.city, appId)
             // store data in database
-//            result.map { response ->
-//                dataStore.addWeatherUpdate(request.city, response)
-//            }
+            result.map { response ->
+                dataStore.addWeatherUpdate(request.city, response)
+            }
             result
         } ?: Observable.empty()
     }
