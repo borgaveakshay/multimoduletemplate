@@ -64,7 +64,9 @@ abstract class BaseFragment<V : ViewModel, B : ViewDataBinding> : Fragment() {
             ActivityCompat.shouldShowRequestPermissionRationale(
                 requireActivity(),
                 Manifest.permission.ACCESS_FINE_LOCATION
-            ) -> showAlertForPermission()
+            ) && ActivityCompat.shouldShowRequestPermissionRationale(
+                requireActivity(),
+                Manifest.permission.ACCESS_COARSE_LOCATION) -> showAlertForPermission()
 
             else -> requestPermission()
         }
