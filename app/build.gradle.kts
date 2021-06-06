@@ -1,5 +1,6 @@
 import com.plugins.addDaggerDependencies
 import com.plugins.addNavigationDependencies
+import com.plugins.addRoomDependencies
 
 plugins {
     id("com.android.application")
@@ -29,5 +30,6 @@ dependencies {
     implementation(project(":models"))
     implementation(project(":datastore"))
     addNavigationDependencies()
+    addRoomDependencies()
     addDaggerDependencies()
 }

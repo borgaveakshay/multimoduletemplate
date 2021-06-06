@@ -12,13 +12,12 @@ import com.example.models.GetWeatherResponse
 import com.example.models.request.GetWeatherRequest
 import com.example.models.response.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    @ApplicationContext private val context: Application,
+    private val context: Application,
     private val weatherUseCase: GetWeatherUseCase
 ) : BaseLocationViewModel() {
 

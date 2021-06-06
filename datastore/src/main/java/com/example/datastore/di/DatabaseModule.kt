@@ -1,5 +1,6 @@
 package com.example.datastore.di
 
+import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import com.example.datastore.WeatherDatabase
@@ -19,7 +20,7 @@ class DatabaseModule {
 
     @Singleton
     @Provides
-    fun getWeatherDatabase(@ApplicationContext context: Context): WeatherDatabase {
+    fun getWeatherDatabase(context: Application): WeatherDatabase {
         return Room.databaseBuilder(
             context,
             WeatherDatabase::class.java,
