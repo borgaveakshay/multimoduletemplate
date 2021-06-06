@@ -16,12 +16,12 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.*
 import javax.inject.Inject
 
-
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     @ApplicationContext private val context: Application,
     private val weatherUseCase: GetWeatherUseCase
 ) : BaseLocationViewModel() {
+
 
     fun getWeatherUpdate(currentLocation: Location): LiveData<Resource<GetWeatherResponse>> {
         val liveData = MutableLiveData<Resource<GetWeatherResponse>>()

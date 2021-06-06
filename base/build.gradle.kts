@@ -6,6 +6,7 @@ import com.plugins.addViewModelAndLiveDataDependencies
 plugins {
     id("com.android.library")
     id("common-binary-plugin")
+    id("dagger.hilt.android.plugin")
 }
 android {
     buildFeatures {

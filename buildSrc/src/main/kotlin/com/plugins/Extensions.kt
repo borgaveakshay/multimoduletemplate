@@ -12,7 +12,7 @@ fun Project.addCoroutineDependencies() {
 fun Project.addDaggerDependencies() {
     dependencies {
         add("implementation", Dependencies.Dagger.dagger)
-        add("annotationProcessor", Dependencies.Dagger.daggerCompiler)
+        add("kapt", Dependencies.Dagger.daggerCompiler)
         add("androidTestImplementation", Dependencies.TestLibs.instrumentationTestDagger)
         add("androidTestAnnotationProcessor", Dependencies.TestLibs.instrumentationTestCompilerDagger)
         add("testImplementation", Dependencies.TestLibs.unitTestDagger)
@@ -46,7 +46,7 @@ fun Project.addNavigationDependencies() {
 
 fun Project.addRetrofitAndOkHttpDependencies() {
     dependencies {
-        add("implementation", Dependencies.Network.retrofit)
+        add("api", Dependencies.Network.retrofit)
         add("implementation", Dependencies.Network.okhttp)
         add("implementation", Dependencies.Network.loggingInterceptor)
         addRxJavaDependancies()
@@ -66,6 +66,6 @@ fun Project.addRxJavaDependancies() {
 fun Project.addGsonDependency() {
     dependencies {
         add("implementation", Dependencies.Network.gson)
-        add("implementation", Dependencies.Network.gsonConvertor)
+        add("api", Dependencies.Network.gsonConvertor)
     }
 }

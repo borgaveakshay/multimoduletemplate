@@ -30,6 +30,7 @@ class Dependencies {
         const val rxjavaAdapter = "3.0.0"
         const val lifecycle = "1.1.1"
         const val location = "18.0.0"
+        const val hiltViewModel = "1.0.0-alpha03"
 
         /* test */
         const val junit = "4.12"
@@ -104,5 +105,6 @@ class Dependencies {
     object Dagger {
         const val dagger = "com.google.dagger:hilt-android:${Versions.dagger}"
         const val daggerCompiler = "com.google.dagger:hilt-compiler:${Versions.dagger}"
+        const val daggerViewModel = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltViewModel}"
     }
 }

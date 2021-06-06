@@ -5,6 +5,7 @@ import com.plugins.addRxJavaDependancies
 plugins {
     id("com.android.library")
     id("common-binary-plugin")
+    id("dagger.hilt.android.plugin")
 }
 dependencies {
     implementation(project(":base"))

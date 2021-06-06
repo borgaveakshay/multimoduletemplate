@@ -2,6 +2,7 @@ package com.example.home.presentation.fragments
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.example.base.fragments.BaseFragment
 import com.example.home.R
@@ -28,7 +29,14 @@ class HomeFragment : BaseFragment<HomeViewModel, HomeFragmentBinding>() {
                 location?.let {
                     getViewModel().getWeatherUpdate(it).observe(viewLifecycleOwner, { resource ->
                         when (resource.status) {
-                            Status.SUCCESS -> viewBinding?.weather = resource.data
+                            Status.SUCCESS -> {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Tempreture : city: ${resource.data?.city} Temp : ${resource.data?.main?.temp}",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                                viewBinding?.weather = resource.data
+                            }
                             Status.ERROR -> Snackbar.make(
                                 view,
                                 resource.errorMessage.toString(),

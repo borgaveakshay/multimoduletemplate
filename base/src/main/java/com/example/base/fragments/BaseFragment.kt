@@ -1,5 +1,6 @@
 package com.example.base.fragments
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.location.Location
@@ -15,7 +16,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
-import com.example.base.Manifest
 import com.example.base.R
 import com.example.base.viewmodels.BaseLocationViewModel
 import com.google.android.gms.location.LocationServices
@@ -36,7 +36,7 @@ abstract class BaseFragment<V : ViewModel, B : ViewDataBinding> : Fragment() {
             getLayoutId(),
             null,
             false
-        )
+        ) as B
         return viewBinding?.root
     }
 
