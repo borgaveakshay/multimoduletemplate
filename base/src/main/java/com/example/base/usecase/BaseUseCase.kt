@@ -1,6 +1,6 @@
 package com.example.base.usecase
 
-import com.example.base.utils.Transformer
+import com.example.base.transformers.Transformer
 import io.reactivex.rxjava3.core.Observable
 
 

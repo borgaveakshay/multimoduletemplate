@@ -30,7 +30,8 @@ fun Project.addViewModelAndLiveDataDependencies() {
 fun Project.addRoomDependencies() {
     dependencies {
         add("implementation", Dependencies.Core.room)
-        add("annotationProcessor", Dependencies.Core.roomAnnotationProcessor)
+        add("kapt", Dependencies.Core.roomAnnotationProcessor)
+        add("implementation", Dependencies.Core.roomRxSupport)
         add("testImplementation", Dependencies.TestLibs.room)
     }
 }
@@ -58,11 +59,13 @@ fun Project.addRxJavaDependancies() {
         add("implementation", Dependencies.Network.rxjava)
         add("implementation", Dependencies.Network.rxJavaAdapter)
         add("implementation", Dependencies.Network.reactiveRx)
+        add("implementation", Dependencies.Network.rxAndroid)
     }
 }
 
 fun Project.addGsonDependency() {
     dependencies {
         add("implementation", Dependencies.Network.gson)
+        add("implementation", Dependencies.Network.gsonConvertor)
     }
 }

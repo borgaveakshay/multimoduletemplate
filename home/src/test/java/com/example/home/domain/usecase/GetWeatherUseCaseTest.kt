@@ -1,6 +1,6 @@
 package com.example.home.domain.usecase
 
-import com.example.base.utils.TestTransformer
+import com.example.base.transformers.TestTransformer
 import com.example.home.domain.repository.GetWeatherRepository
 import com.example.home.testutils.TestUtils
 import com.example.models.request.GetWeatherRequest

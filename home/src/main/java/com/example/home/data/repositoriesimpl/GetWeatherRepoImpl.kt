@@ -3,14 +3,12 @@ package com.example.home.data.repositoriesimpl
 import com.example.datastore.store.WeatherDataStore
 import com.example.home.data.api.WeatherAPI
 import com.example.home.data.api.appId
-
 import com.example.home.domain.repository.GetWeatherRepository
 import com.example.models.GetWeatherResponse
 import com.example.models.request.GetWeatherRequest
 import io.reactivex.rxjava3.core.Observable
-import javax.inject.Inject
 
-class GetWeatherRepoImpl @Inject constructor(
+class GetWeatherRepoImpl(
     private val api: WeatherAPI,
     private val dataStore: WeatherDataStore
 ) : GetWeatherRepository {

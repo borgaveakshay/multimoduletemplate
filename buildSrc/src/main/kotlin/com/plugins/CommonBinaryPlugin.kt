@@ -39,6 +39,16 @@ class CommonBinaryPlugin : Plugin<Project> {
                         multiDexEnabled = true
 
                         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+                        // The following argument makes the Android Test Orchestrator run its
+                        // "pm clear" command after each test invocation. This command ensures
+                        // that the app's state is completely cleared between tests.
+                        testInstrumentationRunnerArguments = mapOf(
+                            "clearPackageData" to "true"
+                        )
+                    }
+                    testOptions {
+                        execution = "ANDROIDX_TEST_ORCHESTRATOR"
                     }
 
                     // Configure common proguard file settings.
@@ -84,9 +94,9 @@ class CommonBinaryPlugin : Plugin<Project> {
             add("testImplementation", Dependencies.TestLibs.roboletric)
             add("testImplementation", Dependencies.TestLibs.mockito)
             add("androidTestImplementation", Dependencies.TestLibs.testExtn)
-            add("androidTestImplementation", Dependencies.TestLibs.testExtn)
-
-
+            add("androidTestImplementation", Dependencies.TestLibs.testRunner)
+            add("androidTestImplementation", Dependencies.TestLibs.testExecutors)
+            add("androidTestUtil", Dependencies.TestLibs.orchestrator)
         }
     }
     private fun setUpJaccoco(project: Project){

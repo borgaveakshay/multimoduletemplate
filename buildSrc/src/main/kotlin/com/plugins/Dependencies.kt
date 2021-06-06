@@ -24,8 +24,9 @@ class Dependencies {
         const val navigationCompose = "2.4.0-alpha01"
         const val retrofit = "2.9.0"
         const val gson = "2.8.7"
-        const val okHttp ="4.9.0"
+        const val okHttp = "4.9.0"
         const val rxjava = "3.0.13"
+        const val rxAndroid = "3.0.0"
         const val rxjavaAdapter = "3.0.0"
 
         /* test */
@@ -34,6 +35,8 @@ class Dependencies {
         const val expressoCore = "3.3.0"
         const val roboletric = "4.5.1"
         const val mockito = "1.10.19"
+        const val testRunner = "1.1.0"
+        const val testExecutors = "2.1.0"
 
         /* build tools */
         const val gradlePlugin = "1.3.72"
@@ -49,15 +52,19 @@ class Dependencies {
         const val junit = "junit:junit:${Versions.junit}"
         const val testExtn = "androidx.test.ext:junit:${Versions.junitExn}"
         const val expressoCore = "androidx.test.espresso:espresso-core:${Versions.expressoCore}"
-        const val instrumentationTestDagger = "com.google.dagger:hilt-android-testing:${Versions.dagger}"
-        const val instrumentationTestCompilerDagger = "com.google.dagger:hilt-compiler:${Versions.dagger}"
+        const val instrumentationTestDagger =
+            "com.google.dagger:hilt-android-testing:${Versions.dagger}"
+        const val instrumentationTestCompilerDagger =
+            "com.google.dagger:hilt-compiler:${Versions.dagger}"
         const val unitTestDagger = "com.google.dagger:hilt-android-testing:${Versions.dagger}"
         const val unitTestCompilerDagger = "com.google.dagger:hilt-compiler:${Versions.dagger}"
-        const val roboletric  = "org.robolectric:robolectric:${Versions.roboletric}"
+        const val roboletric = "org.robolectric:robolectric:${Versions.roboletric}"
         const val room = "androidx.room:room-testing:${Versions.room}"
         const val navigation = "androidx.navigation:navigation-testing:${Versions.navigation}"
         const val mockito = "org.mockito:mockito-all:${Versions.mockito}"
-        const val testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+        const val testRunner = "androidx.test:runner:${Versions.testRunner}"
+        const val orchestrator = "androidx.test:orchestrator:${Versions.testRunner}"
+        const val testExecutors = "android.arch.core:core-testing:${Versions.testExecutors}"
 
     }
 
@@ -69,19 +76,24 @@ class Dependencies {
         const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.jetPack}"
         const val room = "androidx.room:room-runtime:${Versions.room}"
         const val roomAnnotationProcessor = "androidx.room:room-compiler:${Versions.room}"
+        const val roomRxSupport = "androidx.room:room-rxjava3:${Versions.room}"
         const val navigation = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
         const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
-        const val navigationCompose = "androidx.navigation:navigation-compose:${Versions.navigationCompose}"
+        const val navigationCompose =
+            "androidx.navigation:navigation-compose:${Versions.navigationCompose}"
     }
 
     object Network {
-        const val okhttp ="com.squareup.okhttp3:okhttp:${Versions.okHttp}"
+        const val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
         const val gson = "com.google.code.gson:gson:${Versions.gson}"
+        const val gsonConvertor = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
         const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp}"
         const val rxjava = "io.reactivex.rxjava3:rxjava:${Versions.rxjava}"
-        const val rxJavaAdapter = "com.github.akarnokd:rxjava3-retrofit-adapter:${Versions.rxjavaAdapter}"
+        const val rxJavaAdapter =
+            "com.github.akarnokd:rxjava3-retrofit-adapter:${Versions.rxjavaAdapter}"
         const val reactiveRx = "io.reactivex.rxjava3:rxjava:${Versions.rxjava}"
+        const val rxAndroid = "io.reactivex.rxjava3:rxandroid:${Versions.rxAndroid}"
     }
 
     object Dagger {

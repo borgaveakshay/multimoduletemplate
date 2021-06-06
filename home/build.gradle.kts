@@ -1,7 +1,4 @@
-import com.plugins.addCoroutineDependencies
-import com.plugins.addDaggerDependencies
-import com.plugins.addRetrofitAndOkHttpDependencies
-import com.plugins.addViewModelAndLiveDataDependencies
+import com.plugins.*
 
 plugins {
     id("com.android.library")
@@ -9,6 +6,7 @@ plugins {
 }
 
 dependencies {
+    addNavigationDependencies()
     addCoroutineDependencies()
     addDaggerDependencies()
     addViewModelAndLiveDataDependencies()
