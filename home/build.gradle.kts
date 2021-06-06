@@ -5,6 +5,13 @@ plugins {
     id("common-binary-plugin")
 }
 
+android {
+
+    buildFeatures {
+        dataBinding = true
+    }
+}
+
 dependencies {
     addNavigationDependencies()
     addCoroutineDependencies()
@@ -14,5 +21,6 @@ dependencies {
     implementation(project(":base"))
     implementation(project(":models"))
     implementation(project(":datastore"))
+    implementation(Dependencies.Core.location)
 }
 

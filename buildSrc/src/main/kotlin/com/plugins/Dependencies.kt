@@ -28,6 +28,8 @@ class Dependencies {
         const val rxjava = "3.0.13"
         const val rxAndroid = "3.0.0"
         const val rxjavaAdapter = "3.0.0"
+        const val lifecycle = "1.1.1"
+        const val location = "18.0.0"
 
         /* test */
         const val junit = "4.12"
@@ -81,6 +83,9 @@ class Dependencies {
         const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
         const val navigationCompose =
             "androidx.navigation:navigation-compose:${Versions.navigationCompose}"
+        const val lifecycleExtentions = "android.arch.lifecycle:extensions:${Versions.lifecycle}"
+        const val viewModelExtentions = "android.arch.lifecycle:viewmodel:${Versions.lifecycle}"
+        const val location = "com.google.android.gms:play-services-location:${Versions.location}"
     }
 
     object Network {

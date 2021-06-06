@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="location_permission_request_label"> We will require location permission in order to show weather details for your location.</string>
+    <string name="allow_label">Allow</string>
+    <string name="cancel_label">Cancel</string>
+    <string name="location_permission_label">Location Permission</string>
+</resources>

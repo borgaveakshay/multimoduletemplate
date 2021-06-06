@@ -97,6 +97,9 @@ class CommonBinaryPlugin : Plugin<Project> {
             add("androidTestImplementation", Dependencies.TestLibs.testRunner)
             add("androidTestImplementation", Dependencies.TestLibs.testExecutors)
             add("androidTestUtil", Dependencies.TestLibs.orchestrator)
+            add("implementation", Dependencies.Core.coreKtx)
+            add("implementation", Dependencies.Core.lifecycleExtentions)
+            add("implementation", Dependencies.Core.viewModelExtentions)
         }
     }
     private fun setUpJaccoco(project: Project){
