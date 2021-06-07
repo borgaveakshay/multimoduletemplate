@@ -13,8 +13,6 @@ import com.example.models.GetWeatherResponse
 import com.example.models.request.GetWeatherRequest
 import com.example.models.response.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.*
 import javax.inject.Inject
 
@@ -32,10 +30,11 @@ class HomeViewModel @Inject constructor(
     fun getWeatherUpdate(currentLocation: Location): LiveData<Resource<List<GetWeatherResponse>>> {
         val liveData = MutableLiveData<Resource<List<GetWeatherResponse>>>()
         getCityFromLocation(currentLocation)?.let {
-            compositeDisposable.add(weatherUseCase.invoke(GetWeatherRequest(it)).subscribe())
+            liveData.postValue(Resource.loading(null))
             compositeDisposable.add(dataStore.getWeather(it).subscribe { response ->
                 liveData.postValue(Resource.success(response))
             })
+            compositeDisposable.add(weatherUseCase.invoke(GetWeatherRequest(it)).subscribe())
         }
         return liveData
     }

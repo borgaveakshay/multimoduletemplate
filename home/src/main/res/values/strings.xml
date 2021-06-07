@@ -6,4 +6,5 @@
     <string name="date">Date: %s</string>
     <string name="app_name">WeatherAPP</string>
     <string name="save">Save</string>
+    <string name="weather_updated">"Weather Updated Successfully"</string>
 </resources>

@@ -52,6 +52,11 @@ class HomeFragment : BaseFragment<HomeViewModel, HomeFragmentBinding>() {
                             weatherList.adapter = adapter
                             resource.data?.let { list ->
                                 adapter.updateList(list)
+                                Snackbar.make(
+                                    requireView(),
+                                    getString(R.string.weather_updated),
+                                    Snackbar.LENGTH_LONG
+                                ).show()
                             }
                         }
                     }

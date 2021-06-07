@@ -27,6 +27,7 @@ abstract class BaseFragment<V : ViewModel, B : ViewDataBinding> : Fragment() {
     var location: Location? = null
     private var requestPermissionLauncher: ActivityResultLauncher<Array<String>> =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+            getCurrentLocation()
         }
 
     override fun onCreateView(
