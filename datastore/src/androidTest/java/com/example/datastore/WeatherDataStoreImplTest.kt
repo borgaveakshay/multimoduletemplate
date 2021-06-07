@@ -7,6 +7,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.datastore.dao.WeatherDao
 import com.example.datastore.entities.WeatherEntity
+import com.example.models.utils.DateUtil
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -37,7 +38,7 @@ class WeatherDataStoreImplTest {
         //GIVEN
         val date = Calendar.getInstance()
         date.set(2021, 4, 26)
-        val entity = WeatherEntity(0, "Pune", date.timeInMillis, 30.0)
+        val entity = WeatherEntity(0, "Pune", DateUtil.getAbbreviatedFromDateTime(date.timeInMillis), 30.0,"IN")
 
         //WHEN
         dao.insert(entity).blockingAwait()

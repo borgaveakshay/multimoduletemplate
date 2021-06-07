@@ -18,7 +18,7 @@ object TestUtils {
             0,
             0,
             "",
-            Wind(0, 0.0)
+            Wind(0, 0.0),"Pune", "22/02/2021"
 
     )
 }
