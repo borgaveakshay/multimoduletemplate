@@ -7,6 +7,7 @@ import android.location.Location
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.base.viewmodels.BaseLocationViewModel
+import com.example.datastore.store.WeatherDataStore
 import com.example.home.domain.usecase.GetWeatherUseCase
 import com.example.models.GetWeatherResponse
 import com.example.models.request.GetWeatherRequest
@@ -18,20 +19,19 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val context: Application,
-    private val weatherUseCase: GetWeatherUseCase
+    private val weatherUseCase: GetWeatherUseCase,
+    private val dataStore: WeatherDataStore
 ) : BaseLocationViewModel() {
 
 
     fun getWeatherUpdate(currentLocation: Location): LiveData<Resource<GetWeatherResponse>> {
         val liveData = MutableLiveData<Resource<GetWeatherResponse>>()
         getCityFromLocation(currentLocation)?.let {
-            val disposable = weatherUseCase.invoke(GetWeatherRequest(it)).subscribe({ response ->
+            compositeDisposable.add(weatherUseCase.invoke(GetWeatherRequest(it)).subscribe())
+            compositeDisposable.add(dataStore.getWeather(it).subscribe { response ->
+                response.city = it
                 liveData.postValue(Resource.success(response))
-            }, { error ->
-                liveData.postValue(Resource.error(null, error.message))
             })
-
-            compositeDisposable.add(disposable)
         }
         return liveData
     }

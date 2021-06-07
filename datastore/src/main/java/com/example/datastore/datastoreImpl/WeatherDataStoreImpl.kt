@@ -8,13 +8,16 @@ import com.example.models.GetWeatherResponse
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.*
-import javax.inject.Inject
 
-class WeatherDataStoreImpl @Inject constructor(
+
+class WeatherDataStoreImpl(
     private val weatherDao: WeatherDao,
     private val weatherEntityMapper: WeatherEntityMapper
 ) : WeatherDataStore {
-    override fun addWeatherUpdate(city: String, response: GetWeatherResponse) {
+    override fun addWeatherUpdate(
+        city: String,
+        response: GetWeatherResponse
+    ): Observable<GetWeatherResponse> {
         weatherDao.insert(
             WeatherEntity(
                 cityName = city,
@@ -23,7 +26,8 @@ class WeatherDataStoreImpl @Inject constructor(
             )
         ).subscribeOn(
             Schedulers.io()
-        )
+        ).subscribe()
+        return getWeather(city)
     }
 
     override fun getWeather(city: String): Observable<GetWeatherResponse> =

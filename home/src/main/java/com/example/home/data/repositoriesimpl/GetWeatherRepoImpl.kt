@@ -15,12 +15,11 @@ class GetWeatherRepoImpl(
 
     override fun getWeather(weatherRequest: GetWeatherRequest?): Observable<GetWeatherResponse> {
         return weatherRequest?.let { request ->
-            val result = api.getWeather(request.city, appId)
-            // store data in database
-            result.map { response ->
+            api.getWeather(request.city, appId).map { response ->
                 dataStore.addWeatherUpdate(request.city, response)
+                response
             }
-            result
+
         } ?: Observable.empty()
     }
 }
