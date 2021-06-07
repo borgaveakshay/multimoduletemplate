@@ -23,13 +23,16 @@ class HomeViewModel @Inject constructor(
     private val dataStore: WeatherDataStore
 ) : BaseLocationViewModel() {
 
+    val saveClicked = MutableLiveData<Unit>()
 
-    fun getWeatherUpdate(currentLocation: Location): LiveData<Resource<GetWeatherResponse>> {
-        val liveData = MutableLiveData<Resource<GetWeatherResponse>>()
+    fun onSaveClicked() = saveClicked.postValue(Unit)
+
+    fun getWeatherUpdate(currentLocation: Location): LiveData<Resource<List<GetWeatherResponse>>> {
+        Resource.loading(null)
+        val liveData = MutableLiveData<Resource<List<GetWeatherResponse>>>()
         getCityFromLocation(currentLocation)?.let {
             compositeDisposable.add(weatherUseCase.invoke(GetWeatherRequest(it)).subscribe())
             compositeDisposable.add(dataStore.getWeather(it).subscribe { response ->
-                response.city = it
                 liveData.postValue(Resource.success(response))
             })
         }

@@ -17,7 +17,7 @@ class WeatherDataStoreImpl(
     override fun addWeatherUpdate(
         city: String,
         response: GetWeatherResponse
-    ): Observable<GetWeatherResponse> {
+    ): Observable<List<GetWeatherResponse>> {
         weatherDao.insert(
             WeatherEntity(
                 cityName = city,
@@ -30,9 +30,13 @@ class WeatherDataStoreImpl(
         return getWeather(city)
     }
 
-    override fun getWeather(city: String): Observable<GetWeatherResponse> =
-        weatherDao.getWeatherOfCity(city).map {
-            weatherEntityMapper.mapFrom(it)
+    override fun getWeather(city: String): Observable<List<GetWeatherResponse>> =
+        weatherDao.getAllWeatherData().map { dbList ->
+            val list = mutableListOf<GetWeatherResponse>()
+            dbList.forEach {
+                list.add(weatherEntityMapper.mapFrom(it))
+            }
+            list
         }
 
 }

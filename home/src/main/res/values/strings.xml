@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="location">Location: %1$s, %2$s</string>
+    <string name="tempreture">Tempreture: %.2f F</string>
+    <string name="date">Date: %s</string>
+    <string name="app_name">WeatherAPP</string>
+    <string name="save">Save</string>
+</resources>

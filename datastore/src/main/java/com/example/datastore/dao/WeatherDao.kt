@@ -1,6 +1,5 @@
 package com.example.datastore.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -16,7 +15,7 @@ interface WeatherDao {
     fun insert(weatherEntity: WeatherEntity): Completable
 
     @Query("SELECT * from weatherentity")
-    fun getAllWeatherData(): LiveData<List<WeatherEntity>>
+    fun getAllWeatherData(): Observable<List<WeatherEntity>>
 
     @Query("SELECT * from weatherentity where city_name= :cityName")
     fun getWeatherOfCity(cityName: String): Observable<WeatherEntity>
