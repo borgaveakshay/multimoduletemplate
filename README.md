@@ -1,4 +1,4 @@
-# multimoduletemplate
+# weather app assignment
 
 This Project is using following components.
 
