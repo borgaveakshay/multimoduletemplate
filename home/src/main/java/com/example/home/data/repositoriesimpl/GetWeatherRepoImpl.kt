@@ -19,7 +19,6 @@ class GetWeatherRepoImpl(
                 dataStore.addWeatherUpdate(request.city, response)
                 response
             }
-
         } ?: Observable.empty()
     }
 }
