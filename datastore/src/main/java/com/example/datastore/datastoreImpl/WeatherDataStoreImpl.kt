@@ -5,6 +5,7 @@ import com.example.datastore.entities.WeatherEntity
 import com.example.datastore.mappers.WeatherEntityMapper
 import com.example.datastore.store.WeatherDataStore
 import com.example.models.GetWeatherResponse
+import com.example.models.utils.DateUtil
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.*
@@ -22,7 +23,8 @@ class WeatherDataStoreImpl(
             WeatherEntity(
                 cityName = city,
                 temp = response.main.temp,
-                date = Calendar.getInstance().timeInMillis
+                date = DateUtil.getAbbreviatedFromDateTime(Calendar.getInstance().timeInMillis),
+                country = response.sys.country
             )
         ).subscribeOn(
             Schedulers.io()

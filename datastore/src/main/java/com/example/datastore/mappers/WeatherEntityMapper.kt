@@ -6,5 +6,6 @@ import com.example.models.GetWeatherResponse
 import javax.inject.Inject
 
 class WeatherEntityMapper @Inject constructor() : Mapper<WeatherEntity, GetWeatherResponse>() {
-    override fun mapFrom(from: WeatherEntity) = GetWeatherResponse(from.cityName, from.temp, from.date)
+    override fun mapFrom(from: WeatherEntity) =
+        GetWeatherResponse(from.cityName, from.temp, from.date, from.country)
 }

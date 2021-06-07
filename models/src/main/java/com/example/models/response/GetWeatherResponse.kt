@@ -44,14 +44,14 @@ data class GetWeatherResponse(
     val wind: Wind,
 
     var city: String,
-    var date: Long
+    var date: String
 ) {
-    constructor(city: String, temp: Double, date: Long) : this(
+    constructor(city: String, temp: Double, date: String, country: String) : this(
         0,
         0,
         Main(temp, 0.0, 0, 0, 0.0, 0.0),
         Clouds(0),
-        Sys("", 0, 0, 0, 0, 0.0),
+        Sys(country, 0, 0, 0, 0, 0.0),
         0,
         Coord(0.0, 0.0),
         emptyList(),
