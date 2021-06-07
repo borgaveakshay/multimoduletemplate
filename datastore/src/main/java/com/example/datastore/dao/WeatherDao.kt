@@ -13,12 +13,12 @@ interface WeatherDao {
     fun insert(weatherEntity: WeatherEntity): Completable
 
 
-    @Query("SELECT * from weatherentity")
+    @Query("SELECT * from weather")
     fun getAllWeatherData(): Observable<List<WeatherEntity>>
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun update(userEntity: WeatherEntity): Completable
 
-    @Query("SELECT * from weatherentity where city_name= :cityName")
+    @Query("SELECT * from weather where city_name= :cityName")
     fun getWeatherOfCity(cityName: String): Observable<WeatherEntity>
 }
