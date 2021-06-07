@@ -4,15 +4,16 @@ import com.example.models.GetWeatherResponse
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 const val appId = "a2fb3445a09fbaf15553015915c0a80a"
 
 interface WeatherAPI {
 
 
-    @GET("api.openweathermap.org/data/2.5/weather?q={cityname}&appid={apikey}")
+    @GET("/data/2.5/weather?")
     fun getWeather(
-        @Path("cityname") cityName: String,
-        @Path("apikey") appId: String
+        @Query("q") cityName: String,
+        @Query("appid") appId: String
     ): Observable<GetWeatherResponse>
 }

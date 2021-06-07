@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import com.example.base.fragments.BaseFragment
 import com.example.home.R
 import com.example.home.databinding.HomeFragmentBinding
@@ -24,10 +25,10 @@ class HomeFragment : BaseFragment<HomeViewModel, HomeFragmentBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getViewModel().isLocationPermissionGiven.observe(viewLifecycleOwner, { locationAvailable ->
+        getViewModel().isLocationPermissionGiven.observe(viewLifecycleOwner) { locationAvailable ->
             if (locationAvailable) {
                 location?.let {
-                    getViewModel().getWeatherUpdate(it).observe(viewLifecycleOwner, { resource ->
+                    getViewModel().getWeatherUpdate(it).observe(viewLifecycleOwner) { resource ->
                         when (resource.status) {
                             Status.SUCCESS -> {
                                 Toast.makeText(
@@ -48,10 +49,10 @@ class HomeFragment : BaseFragment<HomeViewModel, HomeFragmentBinding>() {
                                 Snackbar.LENGTH_LONG
                             ).show()
                         }
-                    })
+                    }
                 }
             }
-        })
+        }
     }
 
 
