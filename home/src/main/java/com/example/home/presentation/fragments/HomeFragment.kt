@@ -27,6 +27,7 @@ class HomeFragment : BaseFragment<HomeViewModel, HomeFragmentBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewBinding?.viewModel = homeViewModel
         getViewModel().isLocationPermissionGiven.observe(viewLifecycleOwner) { locationAvailable ->
             if (locationAvailable) {
                 checkLocationAndUpdate()
