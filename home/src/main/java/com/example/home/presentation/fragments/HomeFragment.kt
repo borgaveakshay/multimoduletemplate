@@ -31,7 +31,11 @@ class HomeFragment : BaseFragment<HomeViewModel, HomeFragmentBinding>() {
         getViewModel().isLocationPermissionGiven.observe(viewLifecycleOwner) { locationAvailable ->
             if (locationAvailable) {
                 checkLocationAndUpdate()
-            }
+            } else
+                SnackBarUtil.showLongSnackBar(
+                    requireView(),
+                    getString(R.string.weather_not_available)
+                )
         }
         getViewModel().saveClicked.observe(viewLifecycleOwner, Observer {
             checkLocationAndUpdate()
