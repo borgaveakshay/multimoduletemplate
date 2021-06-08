@@ -48,7 +48,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/tweenty_dp"
                     android:layout_marginTop="@dimen/fifteen_dp"
-                    android:text="@{weatherItem.date}"
+                    android:text="@{@string/date(weatherItem.date)}"
                     android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tempreture"
