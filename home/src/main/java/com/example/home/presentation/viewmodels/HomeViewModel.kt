@@ -7,6 +7,7 @@ import android.location.Location
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.base.viewmodels.BaseLocationViewModel
+import com.example.base.viewmodels.disposeUseCase
 import com.example.datastore.store.WeatherDataStore
 import com.example.home.R
 import com.example.home.domain.usecase.GetWeatherUseCase
@@ -35,10 +36,10 @@ class HomeViewModel @Inject constructor(
 
         getCityFromLocation(currentLocation)?.let {
             liveData.postValue(Resource.loading(null))
-            compositeDisposable.add(dataStore.getWeather(it).subscribe { response ->
+            disposeUseCase(dataStore.getWeather(it).subscribe { response ->
                 liveData.postValue(Resource.success(response))
             })
-            compositeDisposable.add(weatherUseCase.invoke(GetWeatherRequest(it)).subscribe())
+            disposeUseCase(weatherUseCase.invoke(GetWeatherRequest(it)).subscribe())
         } ?: liveData.postValue(
             Resource.error(
                 null,
