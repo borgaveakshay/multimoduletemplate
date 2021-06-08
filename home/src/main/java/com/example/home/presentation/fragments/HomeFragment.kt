@@ -7,12 +7,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.observe
 import com.example.base.fragments.BaseFragment
+import com.example.base.utils.SnackBarUtil
 import com.example.home.R
 import com.example.home.databinding.HomeFragmentBinding
 import com.example.home.presentation.adapters.WeatherListAdapter
 import com.example.home.presentation.viewmodels.HomeViewModel
 import com.example.models.response.Status
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -52,26 +52,29 @@ class HomeFragment : BaseFragment<HomeViewModel, HomeFragmentBinding>() {
                         with(it) {
                             weatherList.adapter = adapter
                             resource.data?.let { list ->
-                                adapter.updateList(list)
-                                Snackbar.make(
+                                if (list.isEmpty()) SnackBarUtil.showLongSnackBar(
                                     requireView(),
-                                    getString(R.string.weather_updated),
-                                    Snackbar.LENGTH_LONG
-                                ).show()
+                                    getString(R.string.weather_not_available)
+                                )
+                                else {
+                                    adapter.updateList(list)
+                                    SnackBarUtil.showLongSnackBar(
+                                        requireView(),
+                                        getString(R.string.weather_updated)
+                                    )
+                                }
                             }
                         }
                     }
                 }
-                Status.ERROR -> Snackbar.make(
+                Status.ERROR -> SnackBarUtil.showLongSnackBar(
                     requireView(),
-                    resource.errorMessage.toString(),
-                    Snackbar.LENGTH_LONG
-                ).show()
-                Status.LOADING -> Snackbar.make(
+                    resource.errorMessage.toString()
+                )
+                Status.LOADING -> SnackBarUtil.showLongSnackBar(
                     requireView(),
-                    "loading Weather...",
-                    Snackbar.LENGTH_LONG
-                ).show()
+                    getString(R.string.weather_loading)
+                )
             }
         }
     }

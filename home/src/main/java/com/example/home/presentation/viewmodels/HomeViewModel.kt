@@ -8,11 +8,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.base.viewmodels.BaseLocationViewModel
 import com.example.datastore.store.WeatherDataStore
+import com.example.home.R
 import com.example.home.domain.usecase.GetWeatherUseCase
 import com.example.models.GetWeatherResponse
 import com.example.models.request.GetWeatherRequest
 import com.example.models.response.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.io.IOException
 import java.util.*
 import javax.inject.Inject
 
@@ -35,19 +37,25 @@ class HomeViewModel @Inject constructor(
                 liveData.postValue(Resource.success(response))
             })
             compositeDisposable.add(weatherUseCase.invoke(GetWeatherRequest(it)).subscribe())
-        }
+        } ?: liveData.postValue(Resource.error(null , context.getString(R.string.weather_not_available)))
         return liveData
     }
 
 
-    private fun getCityFromLocation(location: Location): String? {
+    private fun getCityFromLocation(location: Location?): String? {
         var cityName: String? = null
-        val gcd = Geocoder(context, Locale.getDefault())
-        val addresses: List<Address> = gcd.getFromLocation(location.latitude, location.longitude, 1)
-        if (addresses.isNotEmpty()) {
-            cityName = addresses[0].locality
+        location?.let {
+            val gcd = Geocoder(context, Locale.getDefault())
+            try {
+                val addresses: List<Address> =
+                    gcd.getFromLocation(location.latitude, location.longitude, 1)
+                if (addresses.isNotEmpty()) {
+                    cityName = addresses[0].locality
+                }
+            } catch (e: IOException) {
+                cityName = null
+            }
         }
-
         return cityName
     }
 
