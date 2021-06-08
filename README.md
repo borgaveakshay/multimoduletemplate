@@ -9,3 +9,6 @@ This Project is using following components.
 5) Rxjava is used for all bacground threading related work.
 6) Clean code atchitecture is followed.
 7) Unit test cases are added.
+
+#Additional fetures
+1) When user will switch the city a new entry will automaticaly gets added depending upon the location and the tempreture is fetched from api for that accordingly.
