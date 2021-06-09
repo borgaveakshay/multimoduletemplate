@@ -6,6 +6,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.observe
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.base.fragments.BaseFragment
 import com.example.base.utils.SnackBarUtil
 import com.example.home.R
@@ -27,7 +28,6 @@ class HomeFragment : BaseFragment<HomeViewModel, HomeFragmentBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewBinding?.viewModel = homeViewModel
         getViewModel().isLocationPermissionGiven.observe(viewLifecycleOwner) { locationAvailable ->
             if (locationAvailable) {
                 checkLocationAndUpdate()
@@ -40,6 +40,15 @@ class HomeFragment : BaseFragment<HomeViewModel, HomeFragmentBinding>() {
         getViewModel().saveClicked.observe(viewLifecycleOwner, Observer {
             checkLocationAndUpdate()
         })
+
+        viewBinding?.let {
+            with(it) {
+                viewModel = homeViewModel
+                weatherList.layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                weatherList.adapter = adapter
+            }
+        }
     }
 
     private fun checkLocationAndUpdate() {
@@ -53,20 +62,18 @@ class HomeFragment : BaseFragment<HomeViewModel, HomeFragmentBinding>() {
             when (resource.status) {
                 Status.SUCCESS -> {
                     viewBinding?.let {
-                        with(it) {
-                            weatherList.adapter = adapter
-                            resource.data?.let { list ->
-                                if (list.isEmpty()) SnackBarUtil.showLongSnackBar(
+
+                        resource.data?.let { list ->
+                            if (list.isEmpty()) SnackBarUtil.showLongSnackBar(
+                                requireView(),
+                                getString(R.string.weather_not_available)
+                            )
+                            else {
+                                adapter.updateList(list)
+                                SnackBarUtil.showLongSnackBar(
                                     requireView(),
-                                    getString(R.string.weather_not_available)
+                                    getString(R.string.weather_updated)
                                 )
-                                else {
-                                    adapter.updateList(list)
-                                    SnackBarUtil.showLongSnackBar(
-                                        requireView(),
-                                        getString(R.string.weather_updated)
-                                    )
-                                }
                             }
                         }
                     }
