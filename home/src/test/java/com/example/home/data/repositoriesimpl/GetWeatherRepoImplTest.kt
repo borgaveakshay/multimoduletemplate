@@ -5,6 +5,7 @@ import com.example.datastore.store.WeatherDataStore
 import com.example.home.data.api.WeatherAPI
 import com.example.home.testutils.TestUtils
 import com.example.models.request.GetWeatherRequest
+import com.example.models.response.Status
 import io.reactivex.rxjava3.core.Observable
 import org.junit.Before
 import org.junit.Test
@@ -42,10 +43,29 @@ class GetWeatherRepoImplTest {
         }.assertComplete()
     }
 
+    @Test
+    fun when_api_response_is_unsuccessful() {
+        // GIVEN
+        val e = Exception("Custom Error")
+        givenUnsuccessfulResponse(e)
+        // WHEN
+        val result = repoImpl.getWeather(request).test()
+        // THEN
+        result.assertValue() {
+            it.status === Status.ERROR
+        }
+
+    }
+
     private fun givenSuccessfulResponse() {
         Mockito.`when`(api.getWeather(Mockito.anyString(), Mockito.anyString())).thenReturn(
             Observable.just(TestUtils.getWeatherData())
         )
+    }
+
+    private fun givenUnsuccessfulResponse(e: Exception) {
+        Mockito.`when`(api.getWeather(Mockito.anyString(), Mockito.anyString()))
+            .thenAnswer { Observable.just(e) }
     }
 
 }

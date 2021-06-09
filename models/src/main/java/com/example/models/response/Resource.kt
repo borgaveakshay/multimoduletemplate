@@ -4,7 +4,12 @@ enum class Status {
     SUCCESS, ERROR, LOADING
 }
 
-data class Resource<T>(val status: Status, val data: T?, val errorMessage: String?) {
+@Suppress("DataClassPrivateConstructor")
+data class Resource<T> private constructor(
+    val status: Status,
+    val data: T?,
+    val errorMessage: String?
+) {
     companion object {
 
         fun <T> success(data: T): Resource<T> = Resource(Status.SUCCESS, data, null)
