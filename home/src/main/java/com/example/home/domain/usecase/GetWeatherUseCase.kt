@@ -5,11 +5,12 @@ import com.example.base.transformers.Transformer
 import com.example.home.domain.repository.GetWeatherRepository
 import com.example.models.GetWeatherResponse
 import com.example.models.request.GetWeatherRequest
+import com.example.models.response.Resource
 import javax.inject.Inject
 
 class GetWeatherUseCase(
-    transformer: Transformer<GetWeatherResponse>,
+    transformer: Transformer<Resource<GetWeatherResponse>>,
     private val repository: GetWeatherRepository
-) : BaseUseCase<GetWeatherResponse, GetWeatherRequest>(transformer) {
+) : BaseUseCase<Resource<GetWeatherResponse>, GetWeatherRequest>(transformer) {
     override fun createObservable(request: GetWeatherRequest?) = repository.getWeather(request)
 }

@@ -70,10 +70,6 @@ class HomeFragment : BaseFragment<HomeViewModel, HomeFragmentBinding>() {
                             )
                             else {
                                 adapter.updateList(list)
-                                SnackBarUtil.showLongSnackBar(
-                                    requireView(),
-                                    getString(R.string.weather_updated)
-                                )
                             }
                         }
                     }

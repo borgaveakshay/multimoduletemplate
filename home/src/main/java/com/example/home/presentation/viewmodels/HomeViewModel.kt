@@ -14,6 +14,7 @@ import com.example.home.domain.usecase.GetWeatherUseCase
 import com.example.models.GetWeatherResponse
 import com.example.models.request.GetWeatherRequest
 import com.example.models.response.Resource
+import com.example.models.response.Status
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.io.IOException
 import java.util.*
@@ -39,7 +40,11 @@ class HomeViewModel @Inject constructor(
                 disposeUseCase(dataStore.getWeather(it).subscribe { response ->
                     liveData.postValue(Resource.success(response))
                 })
-                disposeUseCase(weatherUseCase.invoke(GetWeatherRequest(it)).subscribe())
+                disposeUseCase(weatherUseCase.invoke(GetWeatherRequest(it)).map { resource ->
+                    if (resource.status == Status.ERROR) {
+                        liveData.postValue(Resource.error(null, resource.errorMessage))
+                    }
+                }.subscribe())
             } ?: liveData.postValue(
                 Resource.error(
                     null,

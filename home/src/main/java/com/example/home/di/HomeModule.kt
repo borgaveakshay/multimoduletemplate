@@ -1,5 +1,6 @@
 package com.example.home.di
 
+import android.app.Application
 import com.example.base.transformers.AsyncTransformer
 import com.example.datastore.dao.WeatherDao
 import com.example.datastore.datastoreImpl.WeatherDataStoreImpl
@@ -9,6 +10,7 @@ import com.example.home.data.api.WeatherAPI
 import com.example.home.data.repositoriesimpl.GetWeatherRepoImpl
 import com.example.home.domain.usecase.GetWeatherUseCase
 import com.example.models.GetWeatherResponse
+import com.example.models.response.Resource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,20 +29,20 @@ class HomeModule {
 
     @Singleton
     @Provides
-    fun getWeatherRepo(api: WeatherAPI, weatherDataStore: WeatherDataStore) =
-        GetWeatherRepoImpl(api, weatherDataStore)
+    fun getWeatherRepo(api: WeatherAPI, weatherDataStore: WeatherDataStore, context: Application) =
+        GetWeatherRepoImpl(api, weatherDataStore, context)
 
     @Singleton
     @Provides
     fun getWeatherApi(retrofit: Retrofit) = retrofit.create(WeatherAPI::class.java)
 
     @Provides
-    fun getAsyncTransformer() = AsyncTransformer<GetWeatherResponse>()
+    fun getAsyncTransformer() = AsyncTransformer<Resource<GetWeatherResponse>>()
 
     @Singleton
     @Provides
     fun getWeatherUseCase(
-        asyncTransformer: AsyncTransformer<GetWeatherResponse>,
+        asyncTransformer: AsyncTransformer<Resource<GetWeatherResponse>>,
         weatherRepoImpl: GetWeatherRepoImpl
     ) = GetWeatherUseCase(asyncTransformer, weatherRepoImpl)
 

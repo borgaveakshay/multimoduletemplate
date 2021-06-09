@@ -61,6 +61,21 @@ data class GetWeatherResponse(
         "",
         Wind(0, 0.0), city, date
     )
+    constructor() : this(
+        0,
+        0,
+        Main(0.0, 0.0, 0, 0, 0.0, 0.0),
+        Clouds(0),
+        Sys("country", 0, 0, 0, 0, 0.0),
+        0,
+        Coord(0.0, 0.0),
+        emptyList(),
+        "",
+        0,
+        0,
+        "",
+        Wind(0, 0.0), "city", ""
+    )
 }
 
 data class Clouds(

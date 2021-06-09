@@ -1,5 +1,6 @@
 package com.example.home.data.repositoriesimpl
 
+import android.app.Application
 import com.example.datastore.store.WeatherDataStore
 import com.example.home.data.api.WeatherAPI
 import com.example.home.testutils.TestUtils
@@ -15,14 +16,16 @@ class GetWeatherRepoImplTest {
     lateinit var api: WeatherAPI
     lateinit var dataStore: WeatherDataStore
     lateinit var request: GetWeatherRequest
+    lateinit var context: Application
 
 
     @Before
     fun before() {
         api = Mockito.mock(WeatherAPI::class.java)
         dataStore = Mockito.mock(WeatherDataStore::class.java)
+        context = Mockito.mock(Application::class.java)
         request = GetWeatherRequest("Pune")
-        repoImpl = GetWeatherRepoImpl(api, dataStore)
+        repoImpl = GetWeatherRepoImpl(api, dataStore, context)
     }
 
 
@@ -34,8 +37,8 @@ class GetWeatherRepoImplTest {
         val result = repoImpl.getWeather(request).test()
         // THEN
         result.assertValue {
-            it.sys.country === "IN"
-            it.main.temp == 230.0
+            it.data?.sys?.country === "IN"
+            it.data?.main?.temp == 230.0
         }.assertComplete()
     }
 

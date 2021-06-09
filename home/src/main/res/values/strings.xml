@@ -9,4 +9,5 @@
     <string name="weather_updated">Weather Updated Successfully</string>
     <string name="weather_loading">Weather Loading…</string>
     <string name="weather_not_available">Weather data not available…</string>
+    <string name="network_data_unavailable">Unable to fetch weather details from server. Offline data is shown.</string>
 </resources>
