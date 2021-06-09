@@ -47,9 +47,6 @@ class CommonBinaryPlugin : Plugin<Project> {
                             "clearPackageData" to "true"
                         )
                     }
-                    testOptions {
-                        execution = "ANDROIDX_TEST_ORCHESTRATOR"
-                    }
 
                     // Configure common proguard file settings.
                     val proguardFile = "proguard-rules.pro"
