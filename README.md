@@ -12,3 +12,4 @@ This project is using following components.
 
 # Additional features
 1) When user will switch the city, a new entry will be automatically added based on location, and temperature is fetched from api accordingly.
+2) Offline case is also handled and proper message is shown to the user.
