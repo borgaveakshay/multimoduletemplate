@@ -2,7 +2,10 @@
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20")
     }
 }
 
@@ -10,7 +13,7 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }
 

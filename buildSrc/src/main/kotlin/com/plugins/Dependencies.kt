@@ -19,6 +19,12 @@ class Dependencies {
         const val coroutines = "1.3.9"
         const val dagger = "2.35.1"
         const val jetPack = "2.2.0"
+        const val compose ="1.0.5"
+        const val composeActivity = "1.3.1"
+        const val composeViewModel = "1.0.0-alpha07"
+        const val navigation = "2.3.5"
+        const val navigationCompose = "2.4.0-rc01"
+
 
         /* test */
         const val junit = "4.12"
@@ -48,12 +54,50 @@ class Dependencies {
 
     }
 
-    object Core {
-        const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
+    object Coroutines {
+        const val coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
         const val coroutines =
             "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+    }
+
+    object Core {
+        const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
         const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.jetPack}"
         const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.jetPack}"
+    }
+
+    object Compose {
+
+        const val composeUi = "androidx.compose.ui:ui:${Versions.compose}"
+        // Tooling support (Previews, etc.)
+        const val toolingSupport = "androidx.compose.ui:ui-tooling:${Versions.compose}"
+        // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+        const val foundation = "androidx.compose.foundation:foundation:${Versions.compose}"
+        // Material Design
+        const val materialDesign = "androidx.compose.material:material:${Versions.compose}"
+        // Material design icons
+        const val materialDesignIcons = "androidx.compose.material:material-icons-core:${Versions.compose}"
+         const val iconExtended = "androidx.compose.material:material-icons-extended:${Versions.compose}"
+        // Integration with activities
+        const val composeActivity = "androidx.activity:activity-compose:${Versions.composeActivity}"
+        // Integration with ViewModels
+        const val composeViewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.composeViewModel}"
+        // Integration with observables
+        const val composeLiveData = "androidx.compose.runtime:runtime-livedata:${Versions.compose}"
+        //implementation 'androidx.compose.runtime:runtime-rxjava2:1.0.5'
+
+        // UI Tests
+        const val test = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
+    }
+
+    object Navigation {
+
+        const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+        const val navigationUI = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+        const val featureModuleSupport = "androidx.navigation:navigation-dynamic-features-fragment:${Versions.navigation}"
+        const val test = "androidx.navigation:navigation-testing:${Versions.navigation}"
+        const val navigationCompose = "androidx.navigation:navigation-compose:${Versions.navigationCompose}"
+
     }
 
     object Dagger {

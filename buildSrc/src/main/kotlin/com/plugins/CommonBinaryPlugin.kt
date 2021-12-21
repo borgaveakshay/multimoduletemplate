@@ -114,6 +114,7 @@ class CommonBinaryPlugin : Plugin<Project> {
         }
     }
 
+    @Suppress("DefaultLocale")
     private fun configureJacoco(
         project: Project,
         variants: DomainObjectSet<out BaseVariant>,
