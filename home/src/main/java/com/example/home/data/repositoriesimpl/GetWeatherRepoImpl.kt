@@ -23,6 +23,6 @@ class GetWeatherRepoImpl(
                 dataStore.addWeatherUpdate(request.city, response)
                 Resource.success(response)
             }.onErrorReturn { Resource.error(null, context.getString(R.string.network_data_unavailable)) }
-        } ?: Observable.just<Resource<GetWeatherResponse>>(Resource.error(null, "empty"))
+        } ?: Observable.just(Resource.error(null, "empty"))
     }
 }
