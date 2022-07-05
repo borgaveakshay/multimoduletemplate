@@ -19,6 +19,7 @@ repositories {
 }
 dependencies {
     compileOnly(gradleApi())
+    implementation("com.google.dagger:hilt-android-gradle-plugin:2.40.5")
     implementation("com.android.tools.build:gradle:7.1.3")
     implementation(kotlin("gradle-plugin", "1.6.0"))
     implementation(kotlin("android-extensions"))

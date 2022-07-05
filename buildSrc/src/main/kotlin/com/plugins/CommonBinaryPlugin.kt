@@ -15,6 +15,7 @@ class CommonBinaryPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             plugins.apply("kotlin-android")
+            plugins.apply("kotlin-kapt")
             plugins.apply("org.jetbrains.kotlin.android")
 
             project.extensions.create<MyModuleExtension>("myOptions")

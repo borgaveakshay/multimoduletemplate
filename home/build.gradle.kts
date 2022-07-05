@@ -6,7 +6,11 @@ plugins {
     id("com.android.library")
     id("common-binary-plugin")
 }
-addCoroutineDependencies()
-addDaggerDependencies()
-addViewModelAndLiveDataDependencies()
+dependencies {
+    implementation(project(":base"))
+    addCoroutineDependencies()
+    addDaggerDependencies()
+    addViewModelAndLiveDataDependencies()
+}
+
 
